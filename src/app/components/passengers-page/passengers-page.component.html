@@ -1,0 +1,76 @@
+<h1>{{ pageTitle }}</h1>
+
+<app-spacer></app-spacer>
+
+<span>Додати</span>
+<form class="d-flex gap-2 mt-2" novalidate [formGroup]="addForm" (ngSubmit)="onAddSubmit()">
+    <input class="form-control" type="text" placeholder="Прізвище" formControlName="surname" />
+    <input class="form-control" type="text" placeholder="Імʼя" formControlName="name" />
+    <input
+        class="form-control"
+        type="text"
+        placeholder="Номер паспорта"
+        formControlName="passport"
+    />
+    <button class="btn btn-primary" type="submit">Додати</button>
+</form>
+
+<app-spacer></app-spacer>
+
+<span>Редагувати</span>
+<form class="d-flex gap-2 mt-2" novalidate [formGroup]="editForm" (ngSubmit)="onEditSubmit()">
+    <input class="form-control" type="text" placeholder="ID" formControlName="id" />
+    <input class="form-control" type="text" placeholder="Прізвище" formControlName="surname" />
+    <input class="form-control" type="text" placeholder="Імʼя" formControlName="name" />
+    <input
+        class="form-control"
+        type="text"
+        placeholder="Номер паспорта"
+        formControlName="passport"
+    />
+    <button class="btn btn-success" type="submit">Редагувати</button>
+</form>
+
+<app-spacer></app-spacer>
+
+<span>Видалити</span>
+<form class="d-flex gap-2 mt-2" novalidate [formGroup]="deleteForm" (ngSubmit)="onDeleteSubmit()">
+    <input class="form-control" type="text" placeholder="ID" formControlName="id" />
+    <button class="btn btn-danger" type="submit">Видалити</button>
+</form>
+
+<app-spacer></app-spacer>
+
+<span>Пошук</span>
+<form class="d-flex gap-2 mt-2" novalidate [formGroup]="searchForm">
+    <input class="form-control" type="text" placeholder="Шукати..." formControlName="search" />
+</form>
+
+<app-spacer></app-spacer>
+
+<strong>
+    <p>{{ log }}</p>
+</strong>
+
+<app-spacer></app-spacer>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Прізвище</th>
+            <th scope="col">Імʼя</th>
+            <th scope="col">Номер паспорта</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let item of isSearching ? searchData : data">
+        <tr>
+            <th scope="row">{{ item.id }}</th>
+            <td>{{ item.surname }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.passport }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<app-spacer></app-spacer>

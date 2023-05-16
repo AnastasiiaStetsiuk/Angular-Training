@@ -1,0 +1,74 @@
+<h1>{{ pageTitle }}</h1>
+
+<app-spacer></app-spacer>
+
+<span>Додати</span>
+<form class="d-flex gap-2 mt-2" novalidate [formGroup]="addForm" (ngSubmit)="onAddSubmit()">
+    <input class="form-control" type="text" placeholder="ID пасажира" formControlName="passenger" />
+    <input class="form-control" type="text" placeholder="ID потягу" formControlName="train" />
+    <input class="form-control" type="text" placeholder="Ціна" formControlName="price" />
+    <input class="form-control" type="text" placeholder="Місце" formControlName="seat" />
+    <input class="form-control" type="text" placeholder="Дата" formControlName="date" />
+    <button class="btn btn-primary" type="submit">Додати</button>
+</form>
+
+<app-spacer></app-spacer>
+
+<span>Редагувати</span>
+<form class="d-flex gap-2 mt-2" novalidate [formGroup]="editForm" (ngSubmit)="onEditSubmit()">
+    <input class="form-control" type="text" placeholder="ID" formControlName="id" />
+    <input class="form-control" type="text" placeholder="ID пасажира" formControlName="passenger" />
+    <input class="form-control" type="text" placeholder="ID потягу" formControlName="train" />
+    <input class="form-control" type="text" placeholder="Ціна" formControlName="price" />
+    <input class="form-control" type="text" placeholder="Місце" formControlName="seat" />
+    <input class="form-control" type="text" placeholder="Дата" formControlName="date" />
+    <button class="btn btn-success" type="submit">Редагувати</button>
+</form>
+
+<app-spacer></app-spacer>
+
+<span>Видалити</span>
+<form class="d-flex gap-2 mt-2" novalidate [formGroup]="deleteForm" (ngSubmit)="onDeleteSubmit()">
+    <input class="form-control" type="text" placeholder="ID" formControlName="id" />
+    <button class="btn btn-danger" type="submit">Видалити</button>
+</form>
+
+<app-spacer></app-spacer>
+
+<span>Пошук</span>
+<form class="d-flex gap-2 mt-2" novalidate [formGroup]="searchForm">
+    <input class="form-control" type="text" placeholder="Шукати..." formControlName="search" />
+</form>
+
+<app-spacer></app-spacer>
+
+<strong>
+    <p>{{ log }}</p>
+</strong>
+
+<app-spacer></app-spacer>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Пасажир</th>
+            <th scope="col">Потяг</th>
+            <th scope="col">Ціна</th>
+            <th scope="col">Номер місця</th>
+            <th scope="col">Дата</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let item of isSearching ? searchData : data">
+        <tr>
+            <th scope="row">{{ item.id }}</th>
+            <td>{{ item.passenger }}</td>
+            <td>{{ item.train }}</td>
+            <td>{{ item.price }}</td>
+            <td>{{ item.seat }}</td>
+            <td>{{ item.date }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<app-spacer></app-spacer>
